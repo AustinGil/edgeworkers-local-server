@@ -9,7 +9,7 @@ const notImplemented = () => {
  * @param {import('http').ServerResponse} [response]
  */
 export const generateClientRequest = (request, response) => {
-  /** @type {EW.IngressClientRequest} request */
+  /** @type {EW.IngressClientRequest} */
   const clientRequest = {
     addHeader: notImplemented,
     cacheKey: {
@@ -50,7 +50,7 @@ export const generateClientRequest = (request, response) => {
       xhtmlSupportLevel: faker.datatype.number(),
     },
     getHeader: (headerKey) => {
-      const header = response.getHeader(headerKey).toString();
+      const header = request.getHeader(headerKey).toString();
       return Array.isArray(header) ? header : [header];
     },
     getVariable: (name) => process.env[name],

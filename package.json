@@ -14,9 +14,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-unicorn": "^39.0.0",
+    "localworkers": "file:localworkers",
     "prettier": "^2.5.1"
-  },
-  "dependencies": {
-    "localworkers": "file:localworkers"
   }
 }
