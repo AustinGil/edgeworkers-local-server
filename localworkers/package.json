@@ -1,0 +1,37 @@
+{
+  "name": "localworkers",
+  "version": "0.0.1",
+  "main": "server.js",
+  "type": "module",
+  "bin": {
+    "localworkers": "./cli.js"
+  },
+  "scripts": {
+    "dev": "nodemon --quiet server.js",
+    "lint": "eslint"
+  },
+  "devDependencies": {
+    "@types/akamai-edgeworkers": "^1.0.8",
+    "@types/node": "^16.11.11",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "eslint": "^8.4.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsdoc": "^37.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-unicorn": "^39.0.0",
+    "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.6",
+    "browser-sync": "^2.27.7",
+    "connect-livereload": "^0.6.1",
+    "create-response": "file:builtins/create-response",
+    "dotenv": "^16.0.0",
+    "http-request": "file:builtins/http-request",
+    "livereload": "^0.9.3",
+    "node-fetch": "^3.1.0",
+    "nodemon": "^2.0.15",
+    "url-search-params": "file:builtins/url-search-params"
+  }
+}

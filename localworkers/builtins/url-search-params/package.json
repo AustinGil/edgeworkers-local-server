@@ -1,0 +1,5 @@
+{
+  "name": "url-search-params",
+  "main": "index.js",
+  "type": "module"
+}

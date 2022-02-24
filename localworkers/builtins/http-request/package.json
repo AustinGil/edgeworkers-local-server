@@ -1,0 +1,8 @@
+{
+  "name": "http-request",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "node-fetch": "^3.2.0"
+  }
+}
