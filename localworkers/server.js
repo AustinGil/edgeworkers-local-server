@@ -5,6 +5,7 @@ dotenv.config();
 // import * as path from 'node:path';
 import * as http from 'node:http';
 // import * as https from 'node:https';
+// import browserSync from 'browser-sync';
 import { generateClientRequest } from './utils.js';
 
 // const __dirname = new URL('.', import.meta.url).pathname;
@@ -37,6 +38,15 @@ const app = async (request, response) => {
 
 http.createServer(app).listen(3000, () => {
   console.log(`HTTP server running at http://localhost:${3000}/`);
+  // https://ponyfoo.com/articles/a-browsersync-primer#inside-a-node-application
+  // browserSync({
+  //   proxy: 'localhost:' + 3000,
+  //   port: 8080,
+  //   watch: true,
+  //   files: [`${process.cwd()}/**/*.js`],
+  //   ui: false,
+  //   open: false,
+  // });
 });
 // https
 //   .createServer(

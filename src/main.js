@@ -62,7 +62,7 @@ export async function onClientRequest(request) {
         </style>
       </head>
       <body>
-        <h1>Fast Autocomplete!</h1>
+        <h1>Fast Autocomplete</h1>
         <p>With EdgeWorkers, you can move search related logic to an edge server running super close to your user.</p>
         <ul>
           <li>Smaller client-side bundles: faster downloads, reduce data for users.</li>
@@ -78,7 +78,8 @@ export async function onClientRequest(request) {
           <button type="submit">Search</button>
         </form>
 
-        ${query.length === 0
+        ${
+    query.length === 0
       ? ''
       : results.length === 0
         ? '<br><p>No results found.</p>'
@@ -90,7 +91,7 @@ export async function onClientRequest(request) {
           })
           .join('')}
         </ul>`
-    }
+        }
       </body>
     </html>`
   );

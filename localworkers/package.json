@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^6.0.0-alpha.6",
+    "browser-sync": "^2.27.7",
     "create-response": "file:builtins/create-response",
     "dotenv": "^16.0.0",
     "http-request": "file:builtins/http-request",
