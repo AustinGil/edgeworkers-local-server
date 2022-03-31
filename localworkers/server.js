@@ -19,19 +19,25 @@ const worker = await import(`${modulePath}/main.js`);
 
 /** @type {import('node:http').RequestListener} */
 const app = async (request, response) => {
-  // console.log(request.)
   const clientRequest = generateClientRequest(request, response);
   if (worker.onClientRequest) {
-    const maybePromise = worker.onClientRequest(clientRequest);
-    if (typeof maybePromise.then === 'function') {
-      await maybePromise;
+    let result = worker.onClientRequest(clientRequest);
+    if (result instanceof Promise) {
+      await result;
     }
   }
   if (worker.responseProvider) {
-    const maybePromise = worker.responseProvider(clientRequest);
-    if (typeof maybePromise.then === 'function') {
-      await maybePromise;
+    let result = worker.responseProvider(clientRequest);
+    if (result instanceof Promise) {
+      result = await result;
     }
+    if (result instanceof Object) {
+      response.writeHead(result.status, result.headers);
+      response.end(result.body);
+      return;
+    }
+    response.end(result);
+    return;
   }
   if (!response.writableEnded) response.end();
 };
