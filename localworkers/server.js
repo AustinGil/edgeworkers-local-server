@@ -1,5 +1,4 @@
-import * as dotenv from 'dotenv';
-dotenv.config();
+import 'dotenv/config';
 // import { URL } from 'node:url';
 // import * as fs from 'node:fs';
 // import * as path from 'node:path';
@@ -20,24 +19,23 @@ const worker = await import(`${modulePath}/main.js`);
 /** @type {import('node:http').RequestListener} */
 const app = async (request, response) => {
   const clientRequest = generateClientRequest(request, response);
+  let result;
   if (worker.onClientRequest) {
-    let result = worker.onClientRequest(clientRequest);
-    if (result instanceof Promise) {
-      await result;
-    }
+    result = worker.onClientRequest(clientRequest);
   }
   if (worker.responseProvider) {
-    let result = worker.responseProvider(clientRequest);
+    result = worker.responseProvider(clientRequest);
+  }
+  if (result) {
     if (result instanceof Promise) {
       result = await result;
     }
     if (result instanceof Object) {
       response.writeHead(result.status, result.headers);
       response.end(result.body);
-      return;
+    } else {
+      response.end(result);
     }
-    response.end(result);
-    return;
   }
   if (!response.writableEnded) response.end();
 };
